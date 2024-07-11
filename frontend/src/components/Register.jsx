@@ -1,45 +1,40 @@
 import { useState } from 'react';
-import { Link } from "react-router-dom";
-import axios from 'axios';
+import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
-import { SnackbarContent, enqueueSnackbar, useSnackbar } from 'notistack';
+// import { SnackbarContent, enqueueSnackbar, useSnackbar } from 'notistack';  //figure out snackbar pls alert looks so meh
+import {useAuth} from '../contexts/authContext';
+import { doCreateUserWithEmailAndPassword } from '../firebase/auth';
 
 
 const Register = () => {
-    const [name, setName] = useState();
+
+
+    const { userLoggedIn } = useAuth();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [isRegistering,setIsRegistering] = useState(false);
+    // const [errorMessage, setErrorMessage] = useState ('');    //find diff possible error messages and send alert errors to client
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        axios.post('http://localhost:3001/register', { name, email, password })
-            .then(result => {
-                console.log(result);
-                if (result.data === "Already registered") {
-                    enqueueSnackbar('E-mail already registered! Please Login to proceed.', {variant:'success', style: {
-                        backgroundColor: '#7dd3fc',
-                        color: 'black',
-                      }});
-                    navigate('/login');
-                }
-                else {
-                    enqueueSnackbar('Registered successfully! Please Login to proceed.', {variant:'success', style: {
-                        backgroundColor: '#6ee7b7',
-                        color: 'black',
-                      }});
-                    navigate('/login');
-                }
-
-            })
-            .catch(err => console.log(err));
+        if(!isRegistering){
+            setIsRegistering(true);
+            try{
+                await doCreateUserWithEmailAndPassword(email,password);
+            }catch(error){
+                console.log(error);
+                alert(error.message);
+            }
+        }
     }
 
 
     return (
-        <div className='register-container'>
+        <div>
+            {userLoggedIn && (<Navigate to={'/home'} replace={true}/>)}
+            <div className='register-container'>
             <div className='register-deco'></div>
             <div className='register-nondeco'><div className="register-wrapper">
                 <div className="register-box">
@@ -47,9 +42,9 @@ const Register = () => {
                     <form onSubmit={handleSubmit} className='registration-form'>
                         <div className='form-inputs'>
                         <div className="input-labels">
-                            <label htmlFor="exampleInputName" className="">
+                            {/* <label htmlFor="exampleInputName" className="">
                                 <strong>Name</strong>
-                            </label>
+                            </label> */}
                             <label htmlFor="exampleInputEmail1" className="">
                                 <strong>Email Id</strong>
                             </label>
@@ -59,13 +54,13 @@ const Register = () => {
                         </div>
 
                         <div className="inputs">
-                            <input
+                            {/* <input
                                 type="text"
                                 placeholder="Enter Name"
                                 id="exampleInputName"
                                 onChange={(event) => setName(event.target.value)}
                                 required
-                            />
+                            /> */}
                             <input
                                 type="email"
                                 placeholder="Enter Email"
@@ -89,6 +84,7 @@ const Register = () => {
                     <Link to='/login'><button className="login-btn">LOGIN</button></Link>
                 </div>
             </div></div>
+        </div>
         </div>
     );
 };

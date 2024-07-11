@@ -66,7 +66,25 @@
     font-weight: bold;
 }
 
+.book-btn:hover{
+    background-color: rgb(102, 189, 224);
+}
+
 .book-link {
     text-decoration: none;
 }
 
+.logout-button{
+    height: 50px;
+    width: 150px;
+    border: none;
+    border-radius: 100px;
+    background-color: rgb(106, 200, 238);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.logout-button:hover{
+    background-color: rgb(102, 189, 224);
+}
