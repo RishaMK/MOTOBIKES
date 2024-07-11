@@ -2,12 +2,17 @@ import express, { response } from "express";
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from "mongoose";
 import { Service } from "./models/ServiceData.js";
+import cors from "cors";
 
 // app is an instance of express application
 const app = express();
 
 //Middleware to parse request body
 app.use(express.json());
+
+//allowing all origins with default of cors(*)
+app.use(cors());
+
 
 //route to send data from service form to mongo
 app.post('/services', async (request, response) => {

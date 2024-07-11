@@ -2,37 +2,37 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './FirstStep.css';
-import { SnackbarContent, enqueueSnackbar, useSnackbar } from 'notistack';
+
 
 const FirstStep = () => {
     const [fullname, setFullName] = useState('');
     const [emailid, setEmailid] = useState('');
     const [model, setModel] = useState('');
     const [service, setService] = useState('');
+    const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        axios.post('http://localhost:3001/firststep', { fullname, emailid, model, service })
-            .then(result => {
-                console.log(result);
-                if (result.data === "Already registered") {
-                    enqueueSnackbar('You are already registered', {variant:'success', style: {
-                        backgroundColor: '#7dd3fc',
-                        color: 'black',
-                      }});
-                    navigate('/Home');
-                }
-                else {
-                    enqueueSnackbar('registered successfully', {variant:'success', style: {
-                        backgroundColor: '#6ee7b7',
-                        color: 'black',
-                      }});
-                    navigate('/Home');
-                }
+        const data = {
+            user_name:fullname,
+            user_email: emailid,
+            model:model,
+            service_type:service
+        };
+        setLoading(true);
+        axios
+            .post('http://localhost:5555/services',data)
+            .then(()=>{
+                setLoading(false);
+                alert('we have registered your request and will get back to you soon!');
+                navigate('/home');
             })
-            .catch(err => console.log(err));
+            .catch((error)=>{
+                setLoading(false);
+                alert('error occurred, please check console or try again!');
+                console.log(error);
+            })
     };
 
     return (
@@ -89,7 +89,9 @@ const FirstStep = () => {
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="register-btn">REGISTER</button>
+                            <button type="submit" className="register-btn" disabled={loading}>
+                                {loading ? 'Registering...' : 'REGISTER'}
+                            </button>
                         </form>
                     </div>
                 </div>
