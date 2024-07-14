@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { Service } from "./models/ServiceData.js";
 import cors from "cors";
 
+
 // app is an instance of express application
 const app = express();
 
@@ -41,6 +42,25 @@ app.post('/services', async (request, response) => {
         response.status(500).send({message:error.message});
     }
 })
+
+
+//route to find all orders
+app.get('/services', async (request, response) => {
+    const user_email = request.query.user_email;
+
+    try {
+        const services = await Service.find({ user_email });
+        return response.status(200).json({
+            count: services.length,
+            data: services
+        });
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({
+            message: error.message
+        });
+    }
+});
 
 
 //setting up the root request 

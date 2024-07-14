@@ -48,12 +48,12 @@
     height: 60px;
     width: 200px;
     cursor: pointer;
-    background-color: rgb(106, 200, 238);
+    background-color: black;
     border: none;
     border-radius: 20px;
     font-size: 17px;
     text-decoration: none;
-    color: black;
+    color: white;
     display: grid;
     place-items: center;
     text-transform: uppercase;
@@ -61,7 +61,7 @@
 }
 
 .book-btn:hover{
-    background-color: rgb(102, 189, 224);
+    background-color: rgb(44, 44, 44);
 }
 
 .book-link {

@@ -3,21 +3,24 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './FirstStep.css';
 import Navbar from './Navbar';
+import { useAuth } from '../contexts/authContext';
 
 
 const FirstStep = () => {
     const [fullname, setFullName] = useState('');
-    const [emailid, setEmailid] = useState('');
     const [model, setModel] = useState('');
     const [service, setService] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const {currentUser} = useAuth();
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
             user_name: fullname,
-            user_email: emailid,
+            user_email: currentUser.email,
             model: model,
             service_type: service
         };
@@ -69,12 +72,13 @@ const FirstStep = () => {
                                             onChange={(event) => setFullName(event.target.value)}
                                             required
                                         />
-                                        <input
+                                         <input
                                             type="email"
-                                            placeholder="Enter Email"
+                                            placeholder={currentUser.email}
+                                            value={currentUser.email} 
                                             id="exampleInputEmail"
-                                            onChange={(event) => setEmailid(event.target.value)}
-                                            required
+                                            readOnly 
+                                            style={{color:"#5a5a5a"}}
                                         />
                                         <input
                                             type="text"

@@ -15,7 +15,7 @@ const Home = () => {
         </div>
         <div className='services-offered'>
         <Link to='/FirstStep' className='book-link'><div className='book-btn'>Service <br></br>Registration</div></Link>
-        <Link to='/home' className='book-link'><div className='book-btn'>History</div></Link>
+        <Link to='/history' className='book-link'><div className='book-btn'>History</div></Link>
         </div>
       </div>
       <div className="img-container">

@@ -17,7 +17,7 @@ const Navbar = () => {
                 {userLoggedIn?
                 <><Link to='/home'>Home</Link>
                 <Link to='/FirstStep'>Service Registration</Link>
-                <Link to='/home'>History</Link>
+                <Link to='/history'>History</Link>
                 <button onClick={()=>{doSignOut().then(()=>{navigate('/login')})}} className='logout-button'>LOGOUT</button> </>:<>
                 <Link to='/login'><button className='logout-button'>LOGIN</button></Link>
                 <Link to='/register'><button className='logout-button'>REGISTER</button></Link>
