@@ -4,12 +4,6 @@
 
 .home-container{
     display: flex;
-    width: 100%;
-    height: 100vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    position: absolute;
 }
 
 .home-text{
@@ -51,7 +45,7 @@
 
 .book-btn{
     margin-top: 50px;
-    height: 70px;
+    height: 60px;
     width: 200px;
     cursor: pointer;
     background-color: rgb(106, 200, 238);
@@ -74,17 +68,7 @@
     text-decoration: none;
 }
 
-.logout-button{
-    height: 50px;
-    width: 150px;
-    border: none;
-    border-radius: 100px;
-    background-color: rgb(106, 200, 238);
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-.logout-button:hover{
-    background-color: rgb(102, 189, 224);
+.services-offered{
+    display: flex;
+    flex-direction: row;
 }
