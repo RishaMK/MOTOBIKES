@@ -4,6 +4,7 @@ import Login from './Login';
 import Register from './Register';
 import FirstStep from './FirstStep';
 import {Routes, Route} from "react-router-dom";
+import History from './History';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element ={<Login/>} />
           <Route path="/home" element ={<Home/>} />
           <Route path='/firststep' element={<FirstStep/>}/>
+          <Route path='/history' element={<History/>}/>
         </Routes>
     </div>
   )
