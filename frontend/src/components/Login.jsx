@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { doSignInWithEmailAndPassword } from '../firebase/auth';
 import { useAuth } from '../contexts/authContext';
 import './Login.css';
+import Navbar from './Navbar';
 
 const Login = () => {
 
@@ -32,6 +33,8 @@ const Login = () => {
     };
 
     return (
+        <div>
+            <Navbar/>
         <div>
             {userLoggedIn && (<Navigate to={'/home'} replace={true}/>)}
             <div className='login-container'>
@@ -64,7 +67,7 @@ const Login = () => {
                                             id="exampleInputPassword1"
                                             onChange={(event) => setPassword(event.target.value)}
                                             required
-                                        />
+                                            />
                                     </div>
                                 </div>
                                 <button type="submit" className="login-button">LOGIN</button>
@@ -77,6 +80,7 @@ const Login = () => {
                 <div className='login-deco'></div>
             </div>
         </div>
+                                            </div>
     );
 };
 

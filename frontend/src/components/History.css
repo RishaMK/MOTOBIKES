@@ -1,0 +1,43 @@
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  height: auto;
+}
+
+.history-title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.history-records {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 90%;
+  margin-top: 30px;
+  max-width: 1200px;
+}
+
+.record-container {
+  border: 2px solid transparent;
+  background-color: rgb(236, 235, 235);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  color: black;
+  cursor: pointer;
+  transition-duration: 0.25s;
+}
+
+.record-container:hover {
+  border: 2px solid transparent;
+  background-color: black;
+  color: rgb(234, 232, 232);
+}
+
+.record-content h3 {
+  margin: 5px 0;
+}
