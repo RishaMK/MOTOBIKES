@@ -5,6 +5,7 @@ import Register from './Register';
 import FirstStep from './FirstStep';
 import {Routes, Route} from "react-router-dom";
 import History from './History';
+import Searchbar from './Searchbar';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element ={<Home/>} />
           <Route path='/firststep' element={<FirstStep/>}/>
           <Route path='/history' element={<History/>}/>
+          <Route path='/Searchbar' element={<Searchbar/>}/>
         </Routes>
     </div>
   )
