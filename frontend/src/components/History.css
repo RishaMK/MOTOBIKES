@@ -31,6 +31,7 @@
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .record-container:hover {

@@ -19,7 +19,7 @@ const History = () => {
         .get(`http://localhost:5555/services?user_email=${currentUser.email}`)
         .then((response) => {
           setServices(response.data.data);
-          setFilteredServices(response.data.data); // Set filteredServices initially to all services
+          setFilteredServices(response.data.data);
           setLoading(false);
         })
         .catch((error) => {
