@@ -1,0 +1,19 @@
+.contact-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-us-content {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.contact-us-content p {
+    font-size: 18px;
+    color: #333;
+}
