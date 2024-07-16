@@ -11,11 +11,13 @@ import Searchbar from './Searchbar';
 import ContactUs from './ContactUs';
 import Services from './Services';
 
+
 function App() {
   return (
     <div>
       <Navbar />
       <div style={{ marginTop: '3.5rem' }}>
+
         <Routes>
           <Route path="/" element ={<Register/>} />
           <Route path="/register" element ={<Register/>} />
@@ -24,6 +26,7 @@ function App() {
           <Route path='/firststep' element={<FirstStep/>}/>
           <Route path='/history' element={<History/>}/>
           <Route path='/Searchbar' element={<Searchbar/>}/>
+
           <Route path='/ContactUs' element={<ContactUs/>}/>
           <Route path='/Services' element={<Services/>}/>
         </Routes>

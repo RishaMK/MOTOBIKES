@@ -1,0 +1,71 @@
+/* General container for the history page */
+.history-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title for the history page */
+.history-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Container for the history records */
+.history-records {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Individual record container */
+.record-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.record-container:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjustments for HistoryCard component */
+.history-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-card .info {
+  font-size: 1em;
+  color: #555;
+}
+
+.history-card .label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .history-container {
+      padding: 10px;
+  }
+
+  .record-container {
+      padding: 15px;
+  }
+
+  .history-title {
+      font-size: 1.5em;
+  }
+}
