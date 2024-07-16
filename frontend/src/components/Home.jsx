@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Home.css';
 import Navbar from './Navbar';
 import Card from './Card';
 
 const Home = () => {
     const cards = [
-        { text: "Explore our services.", link: "/Services" },
+        { text: "Explore our services.", link: "/services" },
         { text: "Book your service appointment.", link: "/FirstStep" },
         { text: "Check your service history.", link: "/history" },
         { text: "Learn more about our team.", link: "/about-us" },
-        { text: "Contact us for support.", link: "/ContactUs" }
+        { text: "Contact us for support.", link: "/contact-us" }
     ];
 
     return (
