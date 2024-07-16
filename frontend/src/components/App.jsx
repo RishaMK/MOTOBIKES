@@ -5,7 +5,6 @@ import Login from './Login';
 import Register from './Register';
 import FirstStep from './FirstStep';
 import Navbar from './Navbar';
-import {Routes, Route} from "react-router-dom";
 import History from './History';
 import Searchbar from './Searchbar';
 import ContactUs from './ContactUs';
