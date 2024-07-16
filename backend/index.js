@@ -69,7 +69,24 @@ app.get('/', (request, response) => {
     return response.status(201).send('Accepted');
 })
 
+app.put('/:id', async (req, res) => {
+    try {
+        const updatedService = await BikeService.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.status(200).json(updatedService);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
+// Delete a bike service
+app.delete('/:id', async (req, res) => {
+    try {
+        await BikeService.findByIdAndDelete(req.params.id);
+        res.status(200).json('Service has been deleted...');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 //Connect to database using Mongoose
 mongoose
     .connect(mongoDBURL)

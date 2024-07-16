@@ -6,7 +6,7 @@ import FirstStep from './FirstStep';
 import {Routes, Route} from "react-router-dom";
 import History from './History';
 import Searchbar from './Searchbar';
-
+import UpdateBikeService from './UpdateBikeService';
 function App() {
 
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path='/firststep' element={<FirstStep/>}/>
           <Route path='/history' element={<History/>}/>
           <Route path='/Searchbar' element={<Searchbar/>}/>
+          <Route path="/:id" element={<UpdateBikeService/>} />
         </Routes>
     </div>
   )

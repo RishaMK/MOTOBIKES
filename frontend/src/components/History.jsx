@@ -59,6 +59,7 @@ const History = () => {
                 service={item.service_type}
                 requested={formatDate(item.createdAt)}
                 last_update={formatDate(item.updatedAt)}
+                id={item._id}
               />
             </div>
           ))}

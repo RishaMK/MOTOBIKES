@@ -94,3 +94,22 @@
 .register-btn:hover {
     background-color: rgb(161, 221, 161);
 }
+
+.editButton, .deleteButton {
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.editButton {
+    background-color: black; /* Green color */
+    color: #fff;
+    margin: 5px;
+}
+
+.deleteButton {
+    background-color:black; /* Red color */
+    color: #fff;
+}
