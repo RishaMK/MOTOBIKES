@@ -26,7 +26,7 @@ const Navbar = () => {
             <>
               <Link to='/home'>Home</Link>
               <Link to='/firststep'>Service Registration</Link>
-              {/* Add other links as needed */}
+              <Link to='/history'>History</Link>
               <button onClick={handleLogout} className='logout-button'>LOGOUT</button>
             </>
             :
