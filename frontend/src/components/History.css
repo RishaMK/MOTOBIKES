@@ -1,11 +1,9 @@
-/* General container for the history page */
 .history-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Title for the history page */
 .history-title {
   text-align: center;
   font-size: 2em;
@@ -13,14 +11,12 @@
   color: #333;
 }
 
-/* Container for the history records */
 .history-records {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Individual record container */
 .record-container {
   width: 100%;
   max-width: 800px;
@@ -32,13 +28,9 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   cursor: pointer;
+  height: 200px;
 }
 
-.record-container:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Adjustments for HistoryCard component */
 .history-card {
   display: flex;
   flex-direction: column;
@@ -55,7 +47,24 @@
   color: #333;
 }
 
-/* Responsive adjustments */
+.delete-card{
+  height: 40px;
+  width: 100px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  border: none;
+  background-color: black;
+  color: white;
+  transition-duration: 0.25s;
+}
+
+.delete-card:hover{
+  background-color: rgb(54, 54, 54);
+  height: 42px;
+  width: 102px;
+}
+
 @media (max-width: 768px) {
   .history-container {
       padding: 10px;

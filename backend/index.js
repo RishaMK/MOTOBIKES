@@ -62,6 +62,22 @@ app.get('/services', async (request, response) => {
     }
 });
 
+//route for deleting a book 
+app.delete('/services/:id', async (request, response) => {
+    try {
+        const { id } = request.params;
+        const result = await Service.findByIdAndDelete(id);
+        if (!result) {
+            return response.status(404).send({ message: "Service not found" });
+        }
+        return response.status(200).send({ message: "Service successfully deleted!" });
+    } catch (error) {
+        console.log(error);
+        response.status(500).send({ message: error.message });
+    }
+});
+
+
 
 //setting up the root request 
 app.get('/', (request, response) => {

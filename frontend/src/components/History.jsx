@@ -43,6 +43,22 @@ const History = () => {
     setFilteredServices(filtered);
   };
 
+  const handleDelete = (id) => {
+    setLoading(true);
+    axios
+      .delete(`http://localhost:5555/services/${id}`)
+      .then(() => {
+        setServices(services.filter(service => service._id !== id));
+        setFilteredServices(filteredServices.filter(service => service._id !== id));
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('An error occurred while deleting the service.');
+        setLoading(false);
+      });
+  };
+
   return (
     <div>
       <Navbar />
@@ -53,12 +69,14 @@ const History = () => {
           {filteredServices.slice().reverse().map((item, index) => (
             <div className="record-container" key={index}>
               <HistoryCard
+                id={item._id}
                 user={item.user_name}
                 email={item.user_email}
                 model={item.model}
                 service={item.service_type}
                 requested={formatDate(item.createdAt)}
                 last_update={formatDate(item.updatedAt)}
+                onDelete={handleDelete}  
               />
             </div>
           ))}
@@ -66,6 +84,6 @@ const History = () => {
       </div>
     </div>
   );
-}
+};
 
 export default History;
