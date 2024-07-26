@@ -2,6 +2,7 @@ import express, { response } from "express";
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from "mongoose";
 import { Service } from "./models/ServiceData.js";
+import { User } from './models/UserData.js';
 import cors from "cors";
 
 
@@ -35,7 +36,19 @@ app.post('/services', async (request, response) => {
             service_type: request.body.service_type,
         };
         const service = await Service.create(newService);
-        response.status(201).send(service);
+
+        const newUser = {
+            u_name: request.body.user_name,
+            u_email: request.body.user_email,
+            u_model: request.body.model
+        }
+        const user = await User.create(newUser);
+
+        response.status(201).send({
+            message: "Service and user created successfully",
+            service,
+            user
+        });
     }
     catch(error){
         console.log(error);
