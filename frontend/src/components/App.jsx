@@ -1,32 +1,35 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '../contexts/authContext';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 import FirstStep from './FirstStep';
-import Navbar from './Navbar';
 import History from './History';
 import Searchbar from './Searchbar';
 import ContactUs from './ContactUs';
 import Services from './Services';
-
+import AdminDashboard from './admin/AdminDashboard';
+import AdminServiceList from './admin/AdminServiceList';
 
 function App() {
   return (
     <div>
-      <div>
+      <AuthProvider>
         <Routes>
-          <Route path="/" element ={<Register/>} />
-          <Route path="/register" element ={<Register/>} />
-          <Route path="/login" element ={<Login/>} />
-          <Route path="/home" element ={<Home/>} />
-          <Route path='/firststep' element={<FirstStep/>}/>
-          <Route path='/history' element={<History/>}/>
-          <Route path='/Searchbar' element={<Searchbar/>}/>
-          <Route path='/ContactUs' element={<ContactUs/>}/>
-          <Route path='/Services' element={<Services/>}/>
+          <Route path="/" element={<Register />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/firststep" element={<FirstStep />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/searchbar" element={<Searchbar />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/admin/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/admin/AdminServiceList" element={<AdminServiceList />} />
         </Routes>
-      </div>
+      </AuthProvider>
     </div>
   );
 }

@@ -110,3 +110,19 @@
 .login-btn:hover{
     background-color: rgb(164, 199, 213);
 }
+
+.admin-toggle {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.admin-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-toggle input {
+    width: 20px;
+    height: 20px;
+}

@@ -5,16 +5,13 @@ import './FirstStep.css';
 import Navbar from './Navbar';
 import { useAuth } from '../contexts/authContext';
 
-
 const FirstStep = () => {
     const [fullname, setFullName] = useState('');
     const [model, setModel] = useState('');
     const [service, setService] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const {currentUser} = useAuth();
-
-
+    const { currentUser } = useAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,19 +22,23 @@ const FirstStep = () => {
             service_type: service
         };
         setLoading(true);
-        axios
-            .post('http://localhost:5555/services', data)
-            .then(() => {
-                setLoading(false);
-                alert('we have registered your request and will get back to you soon!');
-                navigate('/home');
-            })
-            .catch((error) => {
-                setLoading(false);
-                alert('error occurred, please check console or try again!');
-                console.log(error);
-            })
-    };
+        axios.post('http://localhost:5555/api/services', data, {
+            headers: {
+                Authorization: `Bearer ${currentUser.accessToken}` // Assuming token is stored here
+            }
+        })
+        .then((response) => {
+            setLoading(false);
+            alert('Service registered successfully!');
+            navigate('/home');
+        })
+        .catch((error) => {
+            setLoading(false);
+            alert('Failed to register service. Please try again.');
+            console.error('Registration error:', error);
+        });
+        
+    }; 
 
     return (
         <div>

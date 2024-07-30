@@ -1,85 +1,35 @@
-import express, { response } from "express";
-import { PORT, mongoDBURL } from './config.js';
+import express from "express";
 import mongoose from "mongoose";
-import { Service } from "./models/ServiceData.js";
 import cors from "cors";
+import { PORT, mongoDBURL } from './config.js';
+import serviceRoutes from './routes/serviceRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import { authMiddleware } from './middleware/adminAuthMiddleware.js';
 
-
-// app is an instance of express application
 const app = express();
+//const PORT = 5555;
 
-//Middleware to parse request body
+// Middleware
 app.use(express.json());
-
-//allowing all origins with default of cors(*)
 app.use(cors());
 
+// Routes
+app.use('/api/services', serviceRoutes); // Protected by authMiddleware if needed inside serviceRoutes
+app.use('/api/admin', authMiddleware, adminRoutes); // Protected by adminAuthMiddleware
 
-//route to send data from service form to mongo
-app.post('/services', async (request, response) => {
-    try{
-
-        if(
-            !request.body.user_name ||
-            !request.body.user_email ||
-            !request.body.model ||
-            !request.body.service_type
-        ){
-            return response.status(400).send({message: "enter all required fields"});
-        }
-
-        const newService = {
-            user_name: request.body.user_name,
-            user_email: request.body.user_email,
-            model: request.body.model,
-            service_type: request.body.service_type,
-        };
-        const service = await Service.create(newService);
-        response.status(201).send(service);
-    }
-    catch(error){
-        console.log(error);
-        response.status(500).send({message:error.message});
-    }
-})
-
-
-//route to find all orders
-app.get('/services', async (request, response) => {
-    const user_email = request.query.user_email;
-
-    try {
-        const services = await Service.find({ user_email });
-        return response.status(200).json({
-            count: services.length,
-            data: services
-        });
-    } catch (error) {
-        console.log(error.message);
-        response.status(500).send({
-            message: error.message
-        });
-    }
+// Root route
+app.get('/', (req, res) => {
+    res.status(200).send('Welcome to the API');
 });
 
-
-//setting up the root request 
-app.get('/', (request, response) => {
-    console.log(request);
-    return response.status(201).send('Accepted');
-})
-
-
-//Connect to database using Mongoose
-mongoose
-    .connect(mongoDBURL)
+// Connect to MongoDB
+mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log('App connected to database successfully!');
-        // express application starts listening on PORT 5555 
+        console.log('Connected to MongoDB');
         app.listen(PORT, () => {
-            console.log(`App is listening to port: ${PORT}`);
+            console.log(`Server is running on http://localhost:${PORT}`);
         });
     })
     .catch((error) => {
-        console.log(error);
+        console.error('MongoDB connection error:', error);
     });

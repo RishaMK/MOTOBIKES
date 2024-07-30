@@ -1,20 +1,23 @@
+// UserData.js
 import mongoose from 'mongoose';
 
-//defining the user schema
 const UserDataSchema = mongoose.Schema({
-    name : {
+    name: {
         type: String,
-        require: true,
+        required: true,
     },
     email: {
         type: String,
-        require: true,
+        required: true,
     },
     password: {
         type: String,
-        require: true,
+        required: true,
     },
-})
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+});
 
-export const User = mongoose.model('User',UserDataSchema);
-
+export const User = mongoose.model('User', UserDataSchema);
