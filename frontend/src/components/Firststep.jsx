@@ -5,7 +5,6 @@ import './FirstStep.css';
 import Navbar from './Navbar';
 import { useAuth } from '../contexts/authContext';
 
-
 const FirstStep = () => {
     const [fullname, setFullName] = useState('');
     const [model, setModel] = useState('');

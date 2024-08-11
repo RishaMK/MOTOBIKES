@@ -4,28 +4,33 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const AuthContext = React.createContext();
 
-export function useAuth(){
+export function useAuth() {
     return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }){
+export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [loading,setLoading] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, initializeUser);
         return unsubscribe;
-    },[])
+    }, []);
 
-    async function initializeUser(user){
+    async function initializeUser(user) {
         if (user) {
-            setCurrentUser({...user});
+            const tokenResult = await user.getIdTokenResult();
+            const isAdmin = tokenResult.claims.admin || false;
+
+            setCurrentUser({ ...user });
             setUserLoggedIn(true);
-        }
-        else{
+            setIsAdmin(isAdmin);
+        } else {
             setCurrentUser(null);
             setUserLoggedIn(false);
+            setIsAdmin(false);
         }
         setLoading(false);
     }
@@ -33,12 +38,13 @@ export function AuthProvider({ children }){
     const value = {
         currentUser,
         userLoggedIn,
-        loading
-    }
+        isAdmin,
+        loading,
+    };
 
-    return(
-        <AuthContext.Provider value={value}> 
+    return (
+        <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
-    )
+    );
 }

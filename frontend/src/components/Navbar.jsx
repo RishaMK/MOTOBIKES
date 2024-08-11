@@ -1,12 +1,21 @@
-import React from 'react'
+import React from 'react';
 import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { doSignOut } from '../firebase/auth';
 import { useAuth } from '../contexts/authContext';
 
 const Navbar = () => {
-    const navigate = useNavigate();
-    const { userLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  const { userLoggedIn } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await doSignOut();
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
 
     const handleLogoClick = () => {
       navigate('/home');
@@ -40,4 +49,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;
