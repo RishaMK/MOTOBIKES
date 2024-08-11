@@ -6,7 +6,6 @@ const cards = [
     { text: "Explore our services.", link: "/services" },
     { text: "Book your service appointment.", link: "/FirstStep" },
     { text: "Check your service history.", link: "/history" },
-    { text: "Learn more about our team.", link: "/AboutUs" },
     { text: "Contact us for support.", link: "/ContactUs" }
 ];
 
