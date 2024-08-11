@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Card.css'; 
 
 const Card = ({ text, link }) => {
     const navigate = useNavigate();

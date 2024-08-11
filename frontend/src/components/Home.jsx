@@ -3,16 +3,9 @@ import { Link } from "react-router-dom";
 import './Home.css';
 import Navbar from './Navbar';
 import Card from './Card';
+import CardCarousel from './CardCarousel';
 
 const Home = () => {
-    const cards = [
-        { text: "Explore our services.", link: "/services" },
-        { text: "Book your service appointment.", link: "/FirstStep" },
-        { text: "Check your service history.", link: "/history" },
-        { text: "Learn more about our team.", link: "/AboutUs" },
-        { text: "Contact us for support.", link: "/ContactUs" }
-    ];
-
     return (
         <div>
             <Navbar />
@@ -32,11 +25,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="cards-container">
-                    <div className="card-carousel">
-                        {cards.map((card, index) => (
-                            <Card key={index} text={card.text} link={card.link} />
-                        ))}
-                    </div>
+                    <CardCarousel />
                 </div>
             </div>
         </div>

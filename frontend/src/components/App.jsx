@@ -13,6 +13,7 @@ import AdminDashboard from './admin/AdminDashboard';
 import AdminServiceList from './admin/AdminServiceList';
 import Navbar from './Navbar';
 import ManageUsers from './admin/ManageUsers';
+import AboutUs from './AboutUs';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/admin/AdminDashboard" element={<AdminDashboard />} />
           <Route path="/admin/AdminServiceList" element={<AdminServiceList />} />
           <Route path='/admin/ManageUsers' element={<ManageUsers/>}/>
+          <Route path='/AboutUs' element={<AboutUs/>}/>
         </Routes>
       </AuthProvider>
     </div>

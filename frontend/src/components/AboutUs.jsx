@@ -1,10 +1,15 @@
 import React from 'react';
+import Navbar from './Navbar';
+import './AboutUs.css';
 
 const AboutUs = () => {
     return (
         <div>
-            <h1>About Us</h1>
-            <p>This is the about us page content.</p>
+            <Navbar />
+            <br></br>
+            <h1 className='heading'>About Us</h1>
+            <br></br>
+            <p>Page is still under development!</p>
         </div>
     );
 };
