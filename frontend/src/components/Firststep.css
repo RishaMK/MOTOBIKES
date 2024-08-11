@@ -46,6 +46,7 @@
 .form-inputs {
     display: flex;
     gap: 40px;
+    column-gap: 40px;
 }
 
 .input-labels {
@@ -69,7 +70,7 @@
     font-size: 20px;
 }
 
-.inputs input {
+.inputs input, .inputs select {
     height: 40px;
     width: 200px;
     padding-left: 20px;

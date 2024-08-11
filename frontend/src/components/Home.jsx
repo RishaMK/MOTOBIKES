@@ -14,7 +14,7 @@ const Home = () => {
           <h4>Welcome to our bike service center! We're here to ensure that your two-wheeled companion receives the care and attention it deserves. Whether you're in need of a routine check-up, repairs, or a complete overhaul, our team of experienced technicians is ready to provide top-notch service.Welcome to our bike service center! We're here to ensure that your two-wheeled companion receives the care and attention it deserves. Whether you're in need of a routine check-up, repairs, or a complete overhaul, our team of experienced technicians is ready to provide top-notch service.</h4>
         </div>
         <div className='services-offered'>
-        <Link to='/FirstStep' className='book-link'><div className='book-btn'>Service <br></br>Registration</div></Link>
+        <Link to='/Services' className='book-link'><div className='book-btn'>Services Offered</div></Link>
         <Link to='/history' className='book-link'><div className='book-btn'>History</div></Link>
         </div>
       </div>

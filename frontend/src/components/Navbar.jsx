@@ -8,16 +8,27 @@ const Navbar = () => {
     const navigate = useNavigate();
     const { userLoggedIn } = useAuth();
 
+    const handleLogoClick = () => {
+      navigate('/home');
+  };
+
   return (
     <div>
         <nav className='navbar'> 
             <div className="navbar-contents">
-            <div className="navbar-logo"></div>
+            <div 
+                        className="navbar-logo" 
+                        onClick={handleLogoClick}
+                        role="button"
+                        tabIndex={0}
+                    />
             <div className="navbar-links">
                 {userLoggedIn?
-                <><Link to='/home'>Home</Link>
+                <>
+                <Link to='/services'>Services</Link>
                 <Link to='/FirstStep'>Service Registration</Link>
                 <Link to='/history'>History</Link>
+                <Link to='/ContactUs'>Contact Us</Link>
                 <button onClick={()=>{doSignOut().then(()=>{navigate('/login')})}} className='logout-button'>LOGOUT</button> </>:<>
                 {/* <Link to='/login'><button className='logout-button'>LOGIN</button></Link>
                 <Link to='/register'><button className='logout-button'>REGISTER</button></Link> */}

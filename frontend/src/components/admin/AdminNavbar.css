@@ -2,14 +2,14 @@
     margin: 0px;
     padding: 0px;
 }
-.navbar{
+.admin-navbar{
     height: 60px;
     width: 100%;
     background-color: black;
 }
 
 .navbar-contents{
-    margin-top: 55px;
+    margin-top: 0px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -23,7 +23,6 @@
     background-image: url('../../public/images/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
-    cursor: pointer;
 }
 
 .navbar-links{
@@ -37,7 +36,7 @@
 
 .navbar-links a{
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 17px;
     height: 60px;
     width: 150px;
@@ -55,16 +54,17 @@
 }
 
 .logout-button{
+    
     height: 40px;
     width: 100px;
     border: none;
     border-radius: 100px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(80, 79, 79);
     cursor: pointer;
     font-weight: bold;
     font-size: 13px;
 }
 
 .logout-button:hover{
-    background-color: rgb(224, 228, 230);
+    background-color: rgb(2, 41, 61);
 }
