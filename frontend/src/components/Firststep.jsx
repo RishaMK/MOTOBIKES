@@ -18,26 +18,28 @@ const FirstStep = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = {
+        const service_data = {
             user_name: fullname,
             user_email: currentUser.email,
             model: model,
             service_type: service
         };
+    
         setLoading(true);
         axios
-            .post('http://localhost:5555/services', data)
+            .post('http://localhost:5555/services', service_data)
             .then(() => {
                 setLoading(false);
-                alert('we have registered your request and will get back to you soon!');
+                alert('We have registered your request and will get back to you soon!');
                 navigate('/home');
             })
             .catch((error) => {
                 setLoading(false);
-                alert('error occurred, please check console or try again!');
+                alert('Error occurred, please check console or try again!');
                 console.log(error);
-            })
+            });
     };
+    
 
     return (
         <div>
