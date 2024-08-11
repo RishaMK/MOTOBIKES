@@ -23,6 +23,7 @@
     background-image: url('../../public/images/logo.png');
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .navbar-links{
