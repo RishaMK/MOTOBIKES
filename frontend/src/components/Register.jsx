@@ -22,6 +22,14 @@ const Register = () => {
         event.preventDefault();
         if (!isRegistering) {
             setIsRegistering(true);
+
+            // Check if the email contains "admin"
+        if (email.toLowerCase().includes("admin")) {
+            alert("Registration with 'admin' in the email address is not allowed.");
+            setIsRegistering(false);
+            return;
+        }
+        
             try {
                 await doCreateUserWithEmailAndPassword(email, password);
             } catch (error) {

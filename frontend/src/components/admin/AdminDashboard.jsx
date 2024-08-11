@@ -7,9 +7,9 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const { currentUser, userLoggedIn, isAdmin } = useAuth();
 
-  // if (!userLoggedIn) {
-  //   return <p>Please log in to access the dashboard.</p>;
-  // }
+  if (!userLoggedIn) {
+    return <p>Please log in to access the dashboard.</p>;
+  }
 
   const handleViewAllServices = () => {
     navigate('/admin/AdminServiceList'); // Update the path based on your actual route

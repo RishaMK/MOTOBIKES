@@ -22,7 +22,12 @@ const Login = () => {
             try {
                 await doSignInWithEmailAndPassword(email, password);
                 if (isAdmin) {
-                    navigate('/admin/AdminDashboard');
+                    if (email === 'admin@gmail.com') {
+                        navigate('/admin/AdminDashboard');
+                    } else {
+                        alert('You are not authorized to log in as admin.');
+                        setIsSigningIn(false);
+                    }
                 } else {
                     navigate('/home');
                 }

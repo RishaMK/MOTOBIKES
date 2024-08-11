@@ -24,13 +24,13 @@ const AdminServiceList = () => {
         }
     }, [isAdmin, userLoggedIn]);
 
-    // if (!userLoggedIn) {
-    //     return <Navigate to="/login" />;
-    // }
+    if (!userLoggedIn) {
+        return <Navigate to="/login" />;
+    }
 
-    // if (!isAdmin) {
-    //     return <div>Please log in as an admin to access the services list.</div>;
-    // }
+    if (!isAdmin) {
+        return <div>Please log in as an admin to access the services list.</div>;
+    }
 
     return (
         <div>
