@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+.services-container h1{
+    margin-bottom: 20px;
+}
+
 .services-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

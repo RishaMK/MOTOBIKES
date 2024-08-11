@@ -1,61 +1,89 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../contexts/authContext';
-import { Navigate } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
+import HistoryCard from '../HistoryCard';
+import Searchbar from '../Searchbar';
+import '../History.css'; // Reuse the styling from the History component
 
 const AdminServiceList = () => {
-    const { isAdmin, userLoggedIn } = useAuth();
+    const [loading, setLoading] = useState(false);
     const [services, setServices] = useState([]);
+    const [filteredServices, setFilteredServices] = useState([]);
+    const { currentUser } = useAuth();
 
     useEffect(() => {
-        if (userLoggedIn && isAdmin) {
-            axios.get('http://localhost:5555/services', {
-                headers: {
-                    // Add any necessary headers, e.g., Authorization
-                }
-            })
+        if (currentUser) {
+          setLoading(true);
+          axios
+            .get('http://localhost:5555/services')
             .then((response) => {
-                setServices(response.data);
+              setServices(response.data.data);
+              setFilteredServices(response.data.data);
+              console.log(filteredServices); // Add this line to check
+              setLoading(false);
             })
             .catch((error) => {
-                console.error('Error fetching services:', error);
+              console.log(error);
+              alert('An error occurred. Please check the console.');
+              setLoading(false);
             });
         }
-    }, [isAdmin, userLoggedIn]);
+      }, [currentUser]);
+     
+     
 
-    if (!userLoggedIn) {
-        return <Navigate to="/login" />;
-    }
+    const formatDate = (dateString) => {
+        return new Date(dateString).toLocaleDateString();
+    };
 
-    if (!isAdmin) {
-        return <div>Please log in as an admin to access the services list.</div>;
-    }
+    const filterData = (searchTerm) => {
+        const filtered = services.filter(item =>
+            item.user_name.toLowerCase().includes(searchTerm) ||
+            item.model.toLowerCase().includes(searchTerm) ||
+            item.service_type.toLowerCase().includes(searchTerm)
+        );
+        setFilteredServices(filtered);
+    };
+
+    const handleDelete = (id) => {
+        setLoading(true);
+        axios
+            .delete(`http://localhost:5555/services/${id}`)
+            .then(() => {
+                setServices(services.filter(service => service._id !== id));
+                setFilteredServices(filteredServices.filter(service => service._id !== id));
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('An error occurred while deleting the service.', error);
+                setLoading(false);
+            });
+    };
 
     return (
         <div>
             <AdminNavbar />
-            <h1>Admin Service List</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Bike Model</th>
-                        <th>Service Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {services.map((service) => (
-                        <tr key={service._id}>
-                            <td>{service.user_name}</td>
-                            <td>{service.user_email}</td>
-                            <td>{service.model}</td>
-                            <td>{service.service_type}</td>
-                        </tr>
+            <div className='history-container'>
+                <h1 className='history-title'>SERVICES</h1>
+                <Searchbar filterData={filterData} />
+                <div className="history-records">
+                    {filteredServices.slice().reverse().map((item, index) => (
+                        <div className="record-container" key={index}>
+                            <HistoryCard
+                                id={item._id}
+                                user={item.user_name}
+                                email={item.user_email}
+                                model={item.model}
+                                service={item.service_type}
+                                requested={formatDate(item.createdAt)}
+                                last_update={formatDate(item.updatedAt)}
+                                onDelete={handleDelete}
+                            />
+                        </div>
                     ))}
-                </tbody>
-            </table>
+                </div>
+            </div>
         </div>
     );
 };

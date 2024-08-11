@@ -22,11 +22,11 @@ const Register = () => {
             setIsRegistering(true);
 
             // Check if the email contains "admin"
-        if (email.toLowerCase().includes("admin")) {
-            alert("Registration with 'admin' in the email address is not allowed.");
-            setIsRegistering(false);
-            return;
-        }
+        // if (email.toLowerCase().includes("admin")) {
+        //     alert("Registration with 'admin' in the email address is not allowed.");
+        //     setIsRegistering(false);
+        //     return;
+        // }
         
             try {
                 if (!isValidEmail(email)) {
@@ -95,7 +95,7 @@ const Register = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="admin-toggle">
+                                    {/* <div className="admin-toggle">
                                         <label>
                                             <input
                                                 type="checkbox"
@@ -104,7 +104,7 @@ const Register = () => {
                                             />
                                             Register as Admin
                                         </label>
-                                    </div>
+                                    </div> */}
                                     <button type="submit" className="register-btn">REGISTER</button>
                                 </form>
 

@@ -21,13 +21,8 @@ const Login = () => {
             setIsSigningIn(true);
             try {
                 await doSignInWithEmailAndPassword(email, password);
-                if (isAdmin) {
-                    if (email === 'admin@gmail.com') {
+                if (email === 'admin@gmail.com') {
                         navigate('/admin/AdminDashboard');
-                    } else {
-                        alert('You are not authorized to log in as admin.');
-                        setIsSigningIn(false);
-                    }
                 } else {
                     navigate('/home');
                 }
@@ -76,16 +71,6 @@ const Login = () => {
                                                 required
                                             />
                                         </div>
-                                    </div>
-                                    <div className="admin-toggle">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                checked={isAdmin}
-                                                onChange={() => setIsAdmin(!isAdmin)}
-                                            />
-                                            Login as Admin
-                                        </label>
                                     </div>
                                     <button type="submit" className="login-button">LOGIN</button>
                                 </form>

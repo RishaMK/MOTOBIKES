@@ -15,10 +15,19 @@
     border-radius: 5px;
   }
 
-  .AdminDButton{
+  #adminDButton{
     background-color: #4CAF50;
     color: #fff;
     padding: 10px 20px;
     border: none;
-    
+    font-size: medium;    
+  }
+
+  #adminDButton:hover{
+    background-color: #3b8f3e;
+  }
+
+  .headingadmin{
+    margin-top: 300px;
+    margin-bottom: 20px;
   }

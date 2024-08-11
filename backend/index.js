@@ -60,12 +60,15 @@ app.post('/services', async (request, response) => {
 })
 
 
-//route to find all orders
+// Route to find all services or filter by user_email if provided
 app.get('/services', async (request, response) => {
     const user_email = request.query.user_email;
 
     try {
-        const services = await Service.find({ user_email });
+        // Construct the query object conditionally
+        const query = user_email ? { user_email } : {};
+
+        const services = await Service.find(query);
         return response.status(200).json({
             count: services.length,
             data: services
@@ -92,6 +95,55 @@ app.delete('/services/:id', async (request, response) => {
         response.status(500).send({ message: error.message });
     }
 });
+
+// Route to get unique email addresses
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.aggregate([
+            {
+                $group: {
+                    _id: "$u_email",
+                    u_name: { $first: "$u_name" },
+                    u_email: { $first: "$u_email" },
+                    u_model: { $first: "$u_model" }
+                }
+            }
+        ]);
+
+        res.status(200).json({
+            count: users.length,
+            data: users
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send({
+            message: error.message
+        });
+    }
+});
+
+
+// // Route for deleting a user by UID
+// app.delete('/users/:uid', async (req, res) => {
+//     const { uid } = req.params;
+    
+//     try {
+//         // Validate UID
+//         if (!mongoose.Types.ObjectId.isValid(uid)) {
+//             return res.status(400).send({ message: "Invalid user ID" });
+//         }
+
+//         // Attempt to delete user
+//         const result = await User.findByIdAndDelete(uid);
+//         if (!result) {
+//             return res.status(404).send({ message: "User not found" });
+//         }
+//         return res.status(200).send({ message: "User successfully deleted!" });
+//     } catch (error) {
+//         console.error('Error deleting user:', error); // Detailed error logging
+//         res.status(500).send({ message: error.message });
+//     }
+// });
 
 
 

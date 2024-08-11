@@ -28,37 +28,16 @@ const Services = () => {
                         onClick={() => playSound('totalWash')}
                         >
                             <h2>Total Wash of Motorcycle</h2>
-                            <p>
-<<<<<<< HEAD
-                                A Sparkly clean bike is something everyone loves :)
-=======
-                                Filler Lines
->>>>>>> e4acdb080abd5a03723fbe3fec2d14c03a6a2fff
-                            </p>
                         </Link>
                     </div>
                     <div className="service">
                         <Link to="/FirstStep?serviceType=Oil%20Change" className="service-link" onClick={() => playSound('oilChange')}>
                             <h2>Oil Change</h2>
-                            <p>
-<<<<<<< HEAD
-                                Keep the engine healthy physically, and it will keep you healthy mentally.
-=======
-                                Filler Lines
->>>>>>> e4acdb080abd5a03723fbe3fec2d14c03a6a2fff
-                            </p>
                         </Link>
                     </div>
                     <div className="service">
                         <Link to="/FirstStep?serviceType=Engine%20Check" className="service-link" onClick={() => playSound('engineCheck')}>
                             <h2>Engine Check</h2>
-                            <p>
-<<<<<<< HEAD
-                                Oh no, get it checked ASAP!!!
-=======
-                                Filler Lines
->>>>>>> e4acdb080abd5a03723fbe3fec2d14c03a6a2fff
-                            </p>
                         </Link>
                     </div>
                 </div>

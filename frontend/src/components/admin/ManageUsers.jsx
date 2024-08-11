@@ -10,38 +10,47 @@ const ManageUsers = () => {
         // Fetch user data from backend
         axios.get('http://localhost:5555/users')
             .then(response => {
-                setUsers(response.data);
+                setUsers(response.data.data); // Adjust based on the actual response structure
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);
             });
     }, []);
 
+    // const handleDelete = (uid) => {
+    //     axios.delete(`http://localhost:5555/users/${uid}`)
+    //         .then(() => {
+    //             // Filter out the deleted user from the list
+    //             setUsers(users.filter(user => user._id !== uid));
+    //         })
+    //         .catch(error => {
+    //             console.error('Error deleting user:', error);
+    //         });
+    // };
+    
+
     return (
         <div className="manage-users-container">
-            <AdminNavbar/>
-            <h1>Manage Users</h1>
+            <AdminNavbar />
+            <center><h1 className='heading'>USERS</h1></center>
             <table className="user-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <th>Username</th>
                         <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
+                        <th>Model</th>
+                        {/* <th>Actions</th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {users.map(user => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.role}</td>
-                            <td>
-                                <button>Edit</button>
-                                <button>Delete</button>
-                            </td>
+                        <tr key={user._id}>
+                            <td>{user.u_name}</td>
+                            <td>{user.u_email}</td>
+                            <td>{user.u_model}</td>
+                            {/* <td>
+                                <button onClick={() => handleDelete(user._id)}>Delete</button>
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>
