@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './FirstStep.css';
 import Navbar from './Navbar';
-import { useAuth } from '../contexts/authContext';
-
+import { useAuth } from '../../contexts/authContext';
 
 const FirstStep = () => {
     const [fullname, setFullName] = useState('');
@@ -12,7 +11,7 @@ const FirstStep = () => {
     const [service, setService] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const {currentUser} = useAuth();
+    const { currentUser } = useAuth();
 
 
 
@@ -24,7 +23,7 @@ const FirstStep = () => {
             model: model,
             service_type: service
         };
-    
+
         setLoading(true);
         axios
             .post('http://localhost:5555/services', service_data)
@@ -39,11 +38,11 @@ const FirstStep = () => {
                 console.log(error);
             });
     };
-    
+
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="first-step-container">
                 <div className='first-step-deco'></div>
                 <div className='first-step-nondeco'>
@@ -74,13 +73,13 @@ const FirstStep = () => {
                                             onChange={(event) => setFullName(event.target.value)}
                                             required
                                         />
-                                         <input
+                                        <input
                                             type="email"
                                             placeholder={currentUser.email}
-                                            value={currentUser.email} 
+                                            value={currentUser.email}
                                             id="exampleInputEmail"
-                                            readOnly 
-                                            style={{color:"#5a5a5a"}}
+                                            readOnly
+                                            style={{ color: "#5a5a5a" }}
                                         />
                                         <input
                                             type="text"
@@ -89,13 +88,17 @@ const FirstStep = () => {
                                             onChange={(event) => setModel(event.target.value)}
                                             required
                                         />
-                                        <input
-                                            type="text"
-                                            placeholder="Enter Service"
+                                        <select
                                             id="exampleInputService"
                                             onChange={(event) => setService(event.target.value)}
                                             required
-                                        />
+                                        >
+                                            <option value="" disabled selected>Select a service</option>
+                                            <option value="totalWash">Total wash of motorcycle</option>
+                                            <option value="oilChange">Oil Change</option>
+                                            <option value="engineCheck">Engine Check</option>
+                                        </select>
+
                                     </div>
                                 </div>
                                 <button type="submit" className="register-btn" disabled={loading}>

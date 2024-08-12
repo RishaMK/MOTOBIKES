@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import HistoryCard from './HistoryCard';
 import Searchbar from './Searchbar';
 import axios from 'axios';
-import { useAuth } from '../contexts/authContext';
+import { useAuth } from '../../contexts/authContext';
 
 const History = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ const History = () => {
   useEffect(() => {
     if (currentUser && currentUser.email) {
       setLoading(true);
-      axios
+      axios 
         .get(`http://localhost:5555/services?user_email=${currentUser.email}`)
         .then((response) => {
           setServices(response.data.data);

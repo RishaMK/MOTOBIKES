@@ -1,0 +1,71 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.admin-navbar{
+    height: 60px;
+    width: 100%;
+    background-color: black;
+}
+
+.admin-navbar-contents{
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 800px;
+    text-align: center;
+    align-items: center;
+}
+
+.admin-navbar-logo{
+    flex: 1;
+    height: 60px;
+    width: 200px;
+    background-image: url('../../public/images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.admin-navbar-links{
+    display: flex;
+    flex: 2;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-navbar-links a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    height: 60px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition-duration: 0.25s;
+}
+
+.admin-navbar-links a:hover{
+    height: 50px;
+    width: 150px;
+    color: rgb(199, 197, 197);
+}
+
+.admin-logout-button{
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 100px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    color: black;
+}
+
+.admin-logout-button:hover{
+    background-color: rgb(224, 228, 230);
+}

@@ -1,38 +1,39 @@
-*{
-    font-family:'Roboto';
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
-.register-container {
+.first-step-container {
     display: flex;
-    height: 100vh;
+    margin-top: 100px;
 }
 
-.register-deco{
+.first-step-deco{
     flex: 1;
-    background-image: url('../../public/images/register-page.png');
+    margin-top: 200px;
+    background-image: url('../../public/images/services-page.png');
     background-repeat: no-repeat;
-    background-size:contain ;
+    background-size: contain;
 }
 
-.register-nondeco{
-    /* background-color: bisque; */
+.first-step-nondeco {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex: 1;
+    flex: 2;
 }
-.register-wrapper {
+
+.first-step-wrapper {
     padding: 20px;
     padding-bottom: 50px;
     width: 600px;
 }
 
-.register-box h1{
+.first-step-box h1 {
     font-size: 50px;
 }
 
-.registration-form{
+.first-step-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,33 +43,34 @@
     margin-top: 50px;
 }
 
-.form-inputs{
+.form-inputs {
     display: flex;
     gap: 40px;
+    column-gap: 40px;
 }
 
-.input-labels{
+.input-labels {
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 20px;
 }
 
-.input-labels label{
+.input-labels label {
     height: 41px;
     display: grid;
     place-items: center;
     justify-content: left;
 }
 
-.inputs{
+.inputs {
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 20px;
 }
 
-.inputs input{
+.inputs input, .inputs select {
     height: 40px;
     width: 200px;
     padding-left: 20px;
@@ -77,7 +79,7 @@
     border-radius: 10px;
 }
 
-.register-btn{
+.register-btn {
     height: 50px;
     width: 150px;
     margin-left: 10px;
@@ -90,24 +92,11 @@
     margin-bottom: 40px;
 }
 
-.register-btn:hover{
+.register-btn:hover {
     background-color: rgb(161, 221, 161);
 }
 
-.login-btn{
-    height: 40px;
-    width: 100px;
-    border-radius: 50px;
-    border: none;
-    background-color: rgb(183, 225, 241);
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 40px;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-.login-btn:hover{
-    background-color: rgb(164, 199, 213);
+#exampleInputService{
+    width: 100%;
+    padding-left: 10px;
 }
