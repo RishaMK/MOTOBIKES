@@ -1,38 +1,38 @@
-* {
-    font-family: 'Roboto';
+*{
+    font-family:'Roboto';
 }
 
-.login-container {
+.register-container {
     display: flex;
     height: 100vh;
 }
 
-.login-deco {
+.register-deco{
     flex: 1;
-    background-image: url('../../public/images/login-page.png');
+    background-image: url('../../public/images/register-page.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size:contain ;
 }
 
-.login-nondeco {
+.register-nondeco{
+    /* background-color: bisque; */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex: 1;
 }
-
-.login-wrapper {
+.register-wrapper {
     padding: 20px;
     padding-bottom: 50px;
     width: 600px;
 }
 
-.login-box h1 {
+.register-box h1{
     font-size: 50px;
 }
 
-.login-form {
+.registration-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,33 +42,33 @@
     margin-top: 50px;
 }
 
-.form-inputs {
+.form-inputs{
     display: flex;
     gap: 40px;
 }
 
-.input-labels {
+.input-labels{
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 20px;
 }
 
-.input-labels label {
+.input-labels label{
     height: 41px;
     display: grid;
     place-items: center;
     justify-content: left;
 }
 
-.inputs {
+.inputs{
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 20px;
 }
 
-.inputs input {
+.inputs input{
     height: 40px;
     width: 200px;
     padding-left: 20px;
@@ -77,7 +77,7 @@
     border-radius: 10px;
 }
 
-.login-button {
+.register-btn{
     height: 50px;
     width: 150px;
     margin-left: 10px;
@@ -88,13 +88,14 @@
     font-size: 17px;
     cursor: pointer;
     margin-bottom: 40px;
+    color: black;
 }
 
-.login-button:hover {
+.register-btn:hover{
     background-color: rgb(161, 221, 161);
 }
 
-.register-button {
+.login-btn{
     height: 40px;
     width: 100px;
     border-radius: 50px;
@@ -106,8 +107,25 @@
     margin-bottom: 40px;
     text-decoration: none;
     margin-top: 10px;
+    color: black;
 }
 
-.register-button:hover {
+.login-btn:hover{
     background-color: rgb(164, 199, 213);
+}
+
+.admin-toggle {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.admin-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-toggle input {
+    width: 20px;
+    height: 20px;
 }

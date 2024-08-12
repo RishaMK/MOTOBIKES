@@ -1,39 +1,38 @@
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
 }
 
-.first-step-container {
+.login-container {
     display: flex;
-    margin-top: 100px;
+    height: 100vh;
 }
 
-.first-step-deco{
+.login-deco {
     flex: 1;
-    margin-top: 200px;
-    background-image: url('../../public/images/services-page.png');
+    background-image: url('../../public/images/login-page.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.first-step-nondeco {
+.login-nondeco {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex: 2;
+    flex: 1;
 }
 
-.first-step-wrapper {
+.login-wrapper {
     padding: 20px;
     padding-bottom: 50px;
     width: 600px;
 }
 
-.first-step-box h1 {
+.login-box h1 {
     font-size: 50px;
 }
 
-.first-step-form {
+.login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,7 +77,7 @@
     border-radius: 10px;
 }
 
-.register-btn {
+.login-button {
     height: 50px;
     width: 150px;
     margin-left: 10px;
@@ -89,8 +88,44 @@
     font-size: 17px;
     cursor: pointer;
     margin-bottom: 40px;
+    color: black;
 }
 
-.register-btn:hover {
+.login-button:hover {
     background-color: rgb(161, 221, 161);
+}
+
+.register-button {
+    height: 40px;
+    width: 100px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(183, 225, 241);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    text-decoration: none;
+    margin-top: 10px;
+    color: black;
+}
+
+.register-button:hover {
+    background-color: rgb(164, 199, 213);
+}
+
+.admin-toggle {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.admin-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-toggle input {
+    width: 20px;
+    height: 20px;
 }
