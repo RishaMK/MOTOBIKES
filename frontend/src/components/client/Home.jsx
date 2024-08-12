@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import './Home.css';
 import Navbar from './Navbar';
-import Card from './Card';
 import CardCarousel from './CardCarousel';
 
 const Home = () => {

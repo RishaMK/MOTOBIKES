@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './FirstStep.css';
 import Navbar from './Navbar';
-import { useAuth } from '../contexts/authContext';
+import { useAuth } from '../../contexts/authContext';
 
 const FirstStep = () => {
     const [fullname, setFullName] = useState('');

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { doSignInWithEmailAndPassword } from '../firebase/auth';
-import { useAuth } from '../contexts/authContext';
+import { doSignInWithEmailAndPassword } from '../../firebase/auth';
+import { useAuth } from '../../contexts/authContext';
 import './Login.css';
 import Navbar from './Navbar';
 
@@ -11,8 +11,6 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {

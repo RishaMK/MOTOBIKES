@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/authContext';
-import { doCreateUserWithEmailAndPassword } from '../firebase/auth';
-import { firestore } from '../firebase/firebase'; 
+import { useAuth } from '../../contexts/authContext';
+import { doCreateUserWithEmailAndPassword } from '../../firebase/auth';
+import { firestore } from '../../firebase/firebase'; 
 import Navbar from './Navbar';
 import { collection, doc, setDoc } from 'firebase/firestore'; 
 import './register.css';
@@ -20,13 +20,6 @@ const Register = () => {
         event.preventDefault();
         if (!isRegistering) {
             setIsRegistering(true);
-
-            // Check if the email contains "admin"
-        // if (email.toLowerCase().includes("admin")) {
-        //     alert("Registration with 'admin' in the email address is not allowed.");
-        //     setIsRegistering(false);
-        //     return;
-        // }
         
             try {
                 if (!isValidEmail(email)) {
@@ -95,16 +88,6 @@ const Register = () => {
                                             />
                                         </div>
                                     </div>
-                                    {/* <div className="admin-toggle">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                checked={isAdminChecked}
-                                                onChange={() => setIsAdminChecked(!isAdminChecked)} 
-                                            />
-                                            Register as Admin
-                                        </label>
-                                    </div> */}
                                     <button type="submit" className="register-btn">REGISTER</button>
                                 </form>
 

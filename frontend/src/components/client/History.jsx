@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import HistoryCard from './HistoryCard';
 import Searchbar from './Searchbar';
 import axios from 'axios';
-import { useAuth } from '../contexts/authContext';
+import { useAuth } from '../../contexts/authContext';
 
 const History = () => {
   const [loading, setLoading] = useState(false);

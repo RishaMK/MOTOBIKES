@@ -19,8 +19,6 @@ const AdminNavbar = () => {
                 <Link to='/admin/AdminServiceList'>View Services</Link>
                 <Link to='/admin/ManageUsers'>View Users</Link>
                 <button onClick={() => { doSignOut().then(() => { navigate('/login') }) }} className='admin-logout-button'>LOGOUT</button> </> : <>
-                {/* <Link to='/login'><button className='logout-button'>LOGIN</button></Link>
-                <Link to='/register'><button className='logout-button'>REGISTER</button></Link> */}
               </>}
           </div>
         </div>

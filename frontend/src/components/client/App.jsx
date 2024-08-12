@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from '../contexts/authContext';
+import {Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '../../contexts/authContext';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
@@ -9,11 +9,10 @@ import History from './History';
 import Searchbar from './Searchbar';
 import ContactUs from './ContactUs';
 import Services from './Services';
-import AdminDashboard from './admin/AdminDashboard';
-import AdminServiceList from './admin/AdminServiceList';
+import AdminDashboard from '../admin/AdminDashboard';
+import AdminServiceList from '../admin/AdminServiceList';
 import Navbar from './Navbar';
-import ManageUsers from './admin/ManageUsers';
-import AboutUs from './AboutUs';
+import ManageUsers from '../admin/ManageUsers';
 
 function App() {
   return (
@@ -33,7 +32,6 @@ function App() {
           <Route path="/admin/AdminDashboard" element={<AdminDashboard />} />
           <Route path="/admin/AdminServiceList" element={<AdminServiceList />} />
           <Route path='/admin/ManageUsers' element={<ManageUsers/>}/>
-          <Route path='/AboutUs' element={<AboutUs/>}/>
         </Routes>
       </AuthProvider>
     </div>

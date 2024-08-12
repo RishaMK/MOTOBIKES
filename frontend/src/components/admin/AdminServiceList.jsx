@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../contexts/authContext';
 import AdminNavbar from './AdminNavbar';
-import HistoryCard from '../HistoryCard';
-import Searchbar from '../Searchbar';
-import '../History.css'; // Reuse the styling from the History component
+import Searchbar from '../client/Searchbar';
+import '../client/History.css'; 
+import HistoryCard from '../client/HistoryCard';
 
 const AdminServiceList = () => {
     const [loading, setLoading] = useState(false);
@@ -20,7 +20,6 @@ const AdminServiceList = () => {
             .then((response) => {
               setServices(response.data.data);
               setFilteredServices(response.data.data);
-              console.log(filteredServices); // Add this line to check
               setLoading(false);
             })
             .catch((error) => {

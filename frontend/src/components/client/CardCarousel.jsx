@@ -16,7 +16,6 @@ const CardCarousel = () => {
                 {cards.map((card, index) => (
                     <Card key={index} text={card.text} link={card.link} />
                 ))}
-                {/* Duplication of cards for continuous effect */}
                 {cards.map((card, index) => (
                     <Card key={index + cards.length} text={card.text} link={card.link} />
                 ))}

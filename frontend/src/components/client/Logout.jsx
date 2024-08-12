@@ -7,9 +7,7 @@ const Logout = () => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    // Clear user session
     localStorage.removeItem('user');
-    // Redirect to home
     history.push('/');
     window.location.reload();
   };
